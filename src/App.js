@@ -18,33 +18,26 @@ class App extends Component {
   // arrow function to update state pass to child
   // use context have child as a consumer
 
-  userSubmitted = async () => {
-    const data = this.state;
-    const res = await fetch(API_ENDPOINT, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+  async componentDidMount() {
+    const res = await fetch(API_ENDPOINT);
+    const data = await res.json();
+    console.log(data);
+    this.setState({
+      name: '',
+      residence: '',
+      industry: '',
+      submit: true
     })
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          name: event.target.value,
-          residence: event.target.value,
-          industry: event.target.value,
-          submit: true
-        })
-      })
-      .catch((error) => {
-        this.setState({
-          error: alert('all forms are required')
-        })
-    })
+  }
+
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+    
   }
 
 
   render() {
+    const { name, residence, industry } = this.state;
     return (
       <div className="App">
         <header className="App-header">
