@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import useForm from '../../hooks/useForm';
+import Context from '../../Context';
 
-class SelectedState extends Component {
+function SelectedState() {
+
+    // create folder with imgs, id.png (1, 2 ,3 etc)
+
     
 
-    render() {
-        return (
-            <div>
-                <h1>{/*selected states name header goes here*/}</h1>
+       
+    const { values } = useContext(Context);
 
-                <img src={/*conditional image render*/}>
-                    {/*selected states image will go here*/}
-                </img>
+    console.log(values);
+    
+    return (
+        
+            <div>
+                <h1>{values.state.state_name}</h1>
+
+                <img src={values.state.state_id + '.png'} alt="some-state" />
                 <section>
                     {/*some information will go here*/}
                 </section>
@@ -23,8 +31,9 @@ class SelectedState extends Component {
                     <button>Submit</button>
                 </form>
             </div>
-        )
-    }
+       
+            
+    )
 }
 
 export default SelectedState

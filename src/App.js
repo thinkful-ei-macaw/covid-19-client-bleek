@@ -1,51 +1,34 @@
-import React, { Component } from 'react';
-import Register from './components/Register';
-import API_ENDPOINT from './API';
+import React from 'react';
+import Register from './components/register/Register';
+import SelectedState from './components/selected-state/SelectedState';
+import { Route } from 'react-router-dom';
+import useForm from './hooks/useForm';
+
 import './App.css';
+import Context from './Context';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      residence: '',
-      industry: '',
-      submit: false,
-      error: null
-    }
-  }
+function App(props) {
 
-  // arrow function to update state pass to child
-  // use context have child as a consumer
+  
 
-  async componentDidMount() {
-    const res = await fetch(API_ENDPOINT);
-    const data = await res.json();
-    console.log(data);
-    this.setState({
-      name: '',
-      residence: '',
-      industry: '',
-      submit: true
-    })
-  }
+  const { handleChange, handleSubmit, values, setValues } = useForm();
 
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    
-  }
-
-
-  render() {
-    const { name, residence, industry } = this.state;
+  
     return (
-      <div className="App">
+      <Context.Provider value={{
+        handleChange, handleSubmit, values, setValues
+      }}>
+        <div className="App">
         <header className="App-header">
-          <Register />
         </header>
+        <main>
+          <Route exact path="/" component={Register} />
+          <Route path="/state" component={SelectedState} />
+        </main>
       </div>
-    );
-  } 
+    </Context.Provider>
+      
+  );
 }
 
 export default App;
