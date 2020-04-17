@@ -6,6 +6,7 @@ const useForm = () => {
         user: '',
         residence: '',
         industry: '',
+        comments: [],
         state: { }
     });
 

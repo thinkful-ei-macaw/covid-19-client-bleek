@@ -4,7 +4,7 @@ import SelectedState from './components/selected-state/SelectedState';
 import { Route } from 'react-router-dom';
 import useForm from './hooks/useForm';
 
-import './App.css';
+import './App.scss';
 import Context from './Context';
 
 function App(props) {
