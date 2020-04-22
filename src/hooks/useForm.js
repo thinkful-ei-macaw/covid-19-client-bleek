@@ -4,16 +4,15 @@ const useForm = () => {
 
     const [values, setValues] = useState({
         user: '',
-        residence: '',
-        industry: '',
-        comments: [],
-        state: { }
+        residence: [],
+        industry: ''
     });
 
     // const [error, setError] = useState({
-    //     user: '',
-    //     residence: '',
-    //     industry: ''
+    //     user: '' || null,
+    //     residence: '' || null,
+    //     industry: '' || null,
+    //     errorStatus: false
     // })
 
     const handleChange = ev => {

@@ -1,4 +1,4 @@
-import React, { useContext, Component } from 'react';
+import React, { useContext, useState } from 'react';
 import useForm from '../../hooks/useForm';
 import Context from '../../Context';
 import config from '../../API';
@@ -7,12 +7,21 @@ function SelectedState(props) {
 
     const { handleChange, handleSubmit, setValues, values } = useContext(Context);
 
-    
+    const [comments, setComments] = useState();
+
+    // useEffect(() => {
+        
+    //     return () => {
+    //         cleanup
+    //     }
+    // }, [input])
 
     // create folder with imgs, id.png (1, 2 ,3 etc)
-    const submitComment = async () => {
-
-    }
+    // const submitComment = async () => {
+    //     try {
+            
+    //     }
+    // }
 
     console.log(values);
     
