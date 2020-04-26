@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+.selected-state {
+    display: grid;
+}
+
+.cases {
+    border: solid 5px;
+}
+
+.fatal {
+    border: solid 5px;
+}
+
+.comment-form {
+    border: solid 5px;
+    margin: 10px;
+    padding: 20px;
+}

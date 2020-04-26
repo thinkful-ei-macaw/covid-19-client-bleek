@@ -1,5 +1,40 @@
-.reg_landing_page {
-    display: flex;
-    flex-direction: column;
+* {
+    box-sizing: border-box;
 }
 
+.reg_landing_page {
+    display: grid;
+    margin: 20px;
+}
+
+header {
+    margin: 30px;
+}
+
+.reg_form {
+    display: inline-grid;
+    margin: 10px;
+    border: solid 5px;
+    border-radius: 30px;
+    width: fit-content;
+}
+
+label {
+    margin: 10px;
+}
+
+input {
+    padding: 5px;
+    margin: 5px;
+
+}
+
+button {
+    margin: 30px;
+    border: 2px solid #4CAF50;
+    padding: 2px;
+}
+
+img {
+    height: 200px;
+}
