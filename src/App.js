@@ -88,8 +88,6 @@ class App extends React.Component {
 
   render() {
     
-    
-
     return (
       <Context.Provider value={{
         handleChange: this.handleChange,
