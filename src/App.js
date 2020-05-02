@@ -1,7 +1,7 @@
 import React from 'react';
 import Register from './components/register/Register';
 import SelectedState from './components/selected-state/SelectedState';
-import { Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import config from './config';
 
 import './App.scss';
@@ -91,7 +91,6 @@ class App extends React.Component {
     
 
     return (
-      <Router>
       <Context.Provider value={{
         handleChange: this.handleChange,
         handleSubmit: this.handleSubmit,
@@ -111,7 +110,6 @@ class App extends React.Component {
           </main>
         </div>
         </Context.Provider>
-      </Router>
     )
   }
 }
