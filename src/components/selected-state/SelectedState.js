@@ -50,9 +50,8 @@ render() {
             <h2 className="fatal">Comfirmed Fatal: {this.context.state.confirm_fatal}</h2>
             <img className="state-img" src={`/us-states/${this.context.state.state_name.toLowerCase().replace(' ', '-')}.jpg`} alt="some-state" />
             <form className="comment-form" onSubmit={this.postComment}>
-                <label className="post" name="post">{this.context.user} from {this.context.state.state_name}</label>
+                <label className="post" name="post">how was {this.context.user} from {this.context.state.state_name} affected?</label>
                 <textarea
-                    className="post"
                     name="post"
                     rows="4"
                     cols="40"
@@ -62,11 +61,11 @@ render() {
                     Post Comment
                         </button>
             </form>
-            <section>
+            <ul>
                 {this.context.comments.map(comment => (
-                    <div value={comment.state_id}>{comment.comment_body}</div>
+                    <li value={comment.state_id}>{comment.comment_body}</li>
                 ))}
-            </section>
+            </ul>
         </div>
             
         )
