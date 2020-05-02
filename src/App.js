@@ -109,7 +109,7 @@ class App extends React.Component {
             <Route path="/state/:state_id" component={SelectedState} />
           </main>
         </div>
-        </Context.Provider>
+      </Context.Provider>
     )
   }
 }
