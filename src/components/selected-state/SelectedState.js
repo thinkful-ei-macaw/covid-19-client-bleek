@@ -1,18 +1,20 @@
 import React from 'react';
 import Context from '../../Context';
-import config from '../../API';
+import config from '../../config';
 import './SelectedState.scss';
 
 class SelectedState extends React.Component {
 
     static contextType = Context;
 
-componentDidMount() {
-    if (this.context.state.state_name) {
+    componentDidMount() {
+        if (!this.context.state.state_name) {
         this.context.submitForms(null, this.props.match.params.state_id);
-    }
+        }
     }
 
+
+    // more async await combining user actions and api calls
     postComment = async (ev) => {
         ev.preventDefault();
         try {
@@ -26,44 +28,40 @@ componentDidMount() {
                     comment_body: ev.target.post.value
                 })
             };
-            const res = await fetch(`${config.API_ENDPOINT}/comments/${this.context.state_id}`, req);
-            const data = await res.json();
-            console.log(data);
-            this.context.setComments(data);
-            ev.target.reset();
+            const target = ev.target;
+            let res = await fetch(`${config.API_ENDPOINT}/comments/${this.context.state_id}`, req);
+            if (!res.ok) {
+                res = res.status(404).send();
+            } else {
+                const data = await res.json();
+                this.context.setComments(data);
+                target.reset();
+            }
         } catch(error) {
-            console.error(error);
+            this.context.setError(true);
         }
     }
 
 render() {
     return (
-        <div className="select-state">
-            <h1>{this.context.state.state_name}</h1>
+        <div className="grid-container">
+            <h1 className="users-state">{this.context.state.state_name}</h1>
             <h2 className="cases">Comfirmed Cases: {this.context.state.confirm_cases}</h2>
             <h2 className="fatal">Comfirmed Fatal: {this.context.state.confirm_fatal}</h2>
-            <img src={this.context.state.state_id + '.png'} alt="some-state" />
-            <section>
-                {/*some information will go here*/}
-            </section>
+            <img className="state-img" src={`/us-states/${this.context.state.state_name.toLowerCase().replace(' ', '-')}.jpg`} alt="some-state" />
             <form className="comment-form" onSubmit={this.postComment}>
-                <label name="post">{this.context.user}</label>
+                <label className="post" name="post">{this.context.user} from {this.context.state.state_name}</label>
                 <textarea
                     className="post"
                     name="post"
                     rows="4"
                     cols="40"
                 >
-                    {/* user can type comment and view posted comments here */}
                 </textarea>
-                <button>Cancel</button>
-                <button>
-                    Submit
+                <button className="submit-post">
+                    Post Comment
                         </button>
             </form>
-            <section >
-                
-            </section>
             <section>
                 {this.context.comments.map(comment => (
                     <div value={comment.state_id}>{comment.comment_body}</div>

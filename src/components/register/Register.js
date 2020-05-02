@@ -1,6 +1,6 @@
 import React from 'react';
 import Context from '../../Context';
-import config from '../../API';
+import config from '../../config';
 import USMAP from '../../imgs/covid-us.png';
 import './Register.scss';
 
@@ -8,17 +8,23 @@ class Register extends React.Component {
 
     static contextType = Context;
 
+    //callback for route history
     callback = () => {
         this.props.history.push('/state/' + this.context.state_id);
     }
 
+    // async declaration populates drop down selector in form
     getStates = async () => {
         try {
-            const res = await fetch(`${config.API_ENDPOINT}/states`);
-            const data = await res.json();
-            this.context.setResidence(data);
-        } catch (err) {
-            console.error(err);
+            let res = await fetch(`${config.API_ENDPOINT}/states`);
+            if (!res.ok) {
+                res = res.status(404).send()
+            } else {
+                const data = await res.json();
+                this.context.setResidence(data);
+            }
+        } catch (error) {
+            this.context.setError(error);
         }
     }
 
@@ -44,10 +50,10 @@ class Register extends React.Component {
 
 render() {
     return (
-        <div className="reg_landing_page">
-            <h1>COVID-19</h1>
-            <header>Welcome and thank you for participating in this effort to provide facts, clarity and support on this global health crisis. This site was created to provide information on the scope of this ongoing pandemic and share experiences with one another. This was inspired by the swaths of incorrect information going around regarding this pandemic, with those of us most affected in mind. Those in healthcare, non-profits, shipping, those who lost someone, those who witnessed touching acts of humanity, and really anybody that would like to share what they went thru are encouraged to leave some words on your respective states page. Although we are asking for some basic information, please note that this is largely an anonymous application. What little we ask for will never be shared beyond this space. After filling out the forms below, you will be redirected to your states page and able to leave a comment and view others comments.</header>
-            <img src={USMAP} alt="covid-us"></img>
+        <div className="grid-container">
+            <h1 className="title">COVID-19 in the USA: A Message Board</h1>
+            <header className="statement">Welcome and thank you for participating in this effort to share and support each other in these unprecedented times. This was inspired by the swaths of incorrect information going around regarding this pandemic, with those of us most affected in mind. Those in healthcare, non-profits, shipping, those who lost someone, those who witnessed touching acts of humanity, and really anybody that would like to share what they went thru are encouraged to leave some words on your respective states page. We are asking for some basic information, but this is an anonymous space. What little we ask for will never be shared beyond this space. Please fill out and submit the form below, which will direct you to your states page where you will find current data, messages others have left and leave a message of your own.</header>
+            <img className="corona-map" src={USMAP} alt="covid-us"></img>
             <form
                 className="reg_form"
                 onSubmit={ev => this.handleSubmit(ev)}>
@@ -55,29 +61,31 @@ render() {
                 <input
                     name="user"
                     type="text"
+                    placeholder="anon"
                     value={this.context.user}
                     onChange={this.context.handleChange}
                 />
                 <label name="residence">Residence during the pandemic</label>
                 <select
+                    require
+                    className="residence"
                     name="residence"
                     type="text"
                     onChange={this.changeStates}>
+                    <option>Select Your State</option>
                     {this.context.residence.map(item => (
                         <option value={item.id}>{item.state_name}</option>
                     ))}
                 </select>
-                <label name="industry">Industry</label>
+                <label name="industry">Most Recent Employment</label>
                 <input
                     name="industry"
                     type="text"
                     value={this.context.industry}
                     onChange={this.context.handleChange}
                 />
-                <button>Submit</button>
-                
+                <button className="submit">Submit</button>
             </form>
-            
         </div>
         )
     }

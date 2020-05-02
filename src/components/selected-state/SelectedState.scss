@@ -1,21 +1,74 @@
 * {
     box-sizing: border-box;
+    background-color: rgb(48, 206, 172);
 }
 
-.selected-state {
+.grid-container {
     display: grid;
+    background-color: rgb(48, 206, 172);
+}
+
+.users-state {
+    display: flex;
+    flex-flow: column;
+    margin: 10px;
+    padding: 10px;
 }
 
 .cases {
+    display: flex;
+    flex-flow: column;
     border: solid 5px;
+    margin: 10px;
 }
 
 .fatal {
+    display: flex;
+    flex-flow: column;
+    border: solid 5px;
+    margin: 10px;
+}
+
+.state-img {
+    display: flex;
+    flex-flow: column;
+    grid-column: 4;
+    margin: 10px;
+}
+
+.fatal {
+    display: flex;
+    flex-flow: column;
     border: solid 5px;
 }
 
 .comment-form {
+    display: flex;
+    flex-flow: column;
     border: solid 5px;
     margin: 10px;
     padding: 20px;
+}
+
+.post {
+    margin: 10px;
+    padding: 10px;
+    border: 5px;
+}
+
+textarea {
+    margin: 10px;
+    padding: 10px;
+    border: 5px
+}
+
+.submit-post {
+    margin: 10px;
+    padding: 10px;
+}
+
+section {
+    display: flex;
+    flex-flow: column;
+    border: darkslategrey 5px;
 }

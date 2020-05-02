@@ -6,7 +6,10 @@ const Context = React.createContext({
     industry: '',
     comments: [],
     state_id: '',
-    state: {}
+    state: {
+      state_name: ''
+    },
+    hasError: false
 });
 
 export default Context;

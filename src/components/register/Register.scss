@@ -1,18 +1,23 @@
 * {
     box-sizing: border-box;
+    background-color: rgb(48, 206, 172);
 }
 
-.reg_landing_page {
+.grid-container {
     display: grid;
     margin: 20px;
+    padding: 10px;
 }
 
 header {
+    display: flex;
+    flex-flow: column;
     margin: 30px;
 }
 
 .reg_form {
-    display: inline-grid;
+    display: flex;
+    flex-flow: column;
     margin: 10px;
     border: solid 5px;
     border-radius: 30px;
@@ -23,18 +28,26 @@ label {
     margin: 10px;
 }
 
-input {
-    padding: 5px;
-    margin: 5px;
-
+.residence {
+    background-color: #d7cece;
+    padding: 10px;
+    margin: 10px;
 }
 
-button {
+input {
+    background-color: #d7cece;
+    padding: 5px;
+    margin: 5px;
+}
+
+.submit {
     margin: 30px;
     border: 2px solid #4CAF50;
     padding: 2px;
 }
 
-img {
-    height: 200px;
+.corona-map {
+    display: flex;
+    flex-flow: column;
+    height: 400px;   
 }

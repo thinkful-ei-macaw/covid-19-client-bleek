@@ -1,9 +1,15 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { Router } from 'react-router-dom'
+import { shallow } from 'enzyme';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+// smoke test - test if renders
+test('it should render', () => {
+  shallow(<App />);
 });
+
+it('renders children when passed in', () => {
+  const wrapper = shallow((
+    <Router />
+  ));
+  expect(wrapper.find('div').children().hasClass(items.length));

@@ -1,8 +1,8 @@
 import React from 'react';
 import Register from './components/register/Register';
 import SelectedState from './components/selected-state/SelectedState';
-import { Route } from 'react-router-dom';
-import config from './API';
+import { Router, Route } from 'react-router-dom';
+import config from './config';
 
 import './App.scss';
 import Context from './Context';
@@ -15,8 +15,12 @@ class App extends React.Component {
     industry: '',
     comments: [],
     state_id: '',
-    state: {}
+    state: {
+      state_name: ''
+    },
+    hasError: false
   }
+
 
   setResidence = (data) => {
     this.setState({
@@ -24,12 +28,14 @@ class App extends React.Component {
     })
   }
 
+  // displays existing comments by selected state
   setComments = data => {
     this.setState({
       comments: [...this.state.comments, data]
     })
   }
 
+  // async form and api call gets a state
    submitForms = async (callback, state_id) => {
     if (!state_id) {
         state_id = this.state.state_id;
@@ -39,7 +45,6 @@ class App extends React.Component {
             return res.json()
         })
         .then(data => {
-            console.log(data);
             this.getPageData(this.state.state_id, data);
             if (callback) {
                 callback();
@@ -57,14 +62,14 @@ class App extends React.Component {
             state
         })
     } catch (error) {
-        console.error(error);
+      this.setState({
+        error: true
+      })
     }
 }
 
   handleChange = ev => {
     const { name, value } = ev.target;
-    console.log(ev.target.name);
-    console.log(ev.target.value);
     this.setState({
         [name]: value
     })
@@ -73,10 +78,20 @@ class App extends React.Component {
   setValues = data => {
     this.setState(data)
   }
+
+  setError = error => {
+    this.setState({
+      hasError: true
+    })
+  }
   
 
   render() {
+    
+    
+
     return (
+      <Router>
       <Context.Provider value={{
         handleChange: this.handleChange,
         handleSubmit: this.handleSubmit,
@@ -84,6 +99,7 @@ class App extends React.Component {
         setComments: this.setComments,
         setResidence: this.setResidence,
         setValues: this.setValues,
+        setError: this.setError,
         ...this.state
       }}>
         <div className="App">
@@ -94,7 +110,8 @@ class App extends React.Component {
             <Route path="/state/:state_id" component={SelectedState} />
           </main>
         </div>
-      </Context.Provider>
+        </Context.Provider>
+      </Router>
     )
   }
 }
