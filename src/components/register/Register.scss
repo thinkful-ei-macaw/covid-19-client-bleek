@@ -9,9 +9,16 @@
     padding: 10px;
 }
 
-header {
+.title {
     display: flex;
     flex-flow: column;
+
+}
+
+.statement {
+    display: flex;
+    flex-flow: column;
+    border: solid 5px;
     margin: 30px;
 }
 
