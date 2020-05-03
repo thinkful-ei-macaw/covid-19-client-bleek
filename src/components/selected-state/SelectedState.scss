@@ -1,75 +1,76 @@
 * {
-    box-sizing: border-box;
-    background-color: rgb(48, 206, 172);
+  box-sizing: border-box;
+  background-color: rgb(48, 206, 172);
 }
 
 .grid-container {
-    display: grid;
-    background-color: rgb(48, 206, 172);
+  display: grid;
+  background-color: rgb(48, 206, 172);
 }
 
 .users-state {
-    display: flex;
-    flex-flow: column;
-    margin: 10px;
-    padding: 10px;
+  display: flex;
+  flex-flow: column;
+  margin: 10px;
+  padding: 10px;
 }
 
 .cases {
-    display: flex;
-    flex-flow: column;
-    border: solid 5px;
-    margin: 10px;
+  display: flex;
+  flex-flow: column;
+  border: solid 5px;
+  margin: 10px;
 }
 
 .fatal {
-    display: flex;
-    flex-flow: column;
-    border: solid 5px;
-    margin: 10px;
+  display: flex;
+  flex-flow: column;
+  border: solid 5px;
+  margin: 10px;
 }
 
 .state-img {
-    display: flex;
-    flex-flow: column;
-    grid-column: 4;
-    margin: 10px;
+  display: flex;
+  flex-flow: column;
+  grid-column: 4;
+  grid-column-end: 2;
+  margin: 10px;
 }
 
 .fatal {
-    display: flex;
-    flex-flow: column;
-    border: solid 5px;
+  display: flex;
+  flex-flow: column;
+  border: solid 5px;
 }
 
 .comment-form {
-    display: flex;
-    flex-flow: column;
-    border: solid 5px;
-    margin: 10px;
-    padding: 20px;
+  display: flex;
+  flex-flow: column;
+  border: solid 5px;
+  margin: 10px;
+  padding: 20px;
 }
 
 .post {
-    margin: 10px;
-    padding: 10px;
-    border: 5px;
+  margin: 10px;
+  padding: 10px;
+  border: 5px;
 }
 
 textarea {
-    margin: 10px;
-    padding: 10px;
-    border: solid 5px;
+  margin: 10px;
+  padding: 10px;
+  border: solid 5px;
 }
 
 .submit-post {
-    margin: 10px;
-    padding: 10px;
-    border: solid 5px;
+  margin: 10px;
+  padding: 10px;
+  border: solid 5px;
 }
 
 li {
-    display: flex;
-    flex-flow: column;
-    border: solid 5px;
+  display: flex;
+  flex-flow: column;
+  border: solid 5px;
 }

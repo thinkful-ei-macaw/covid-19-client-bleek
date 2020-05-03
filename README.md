@@ -11,5 +11,5 @@ JavaScript web app in a React.JS client and a Node.JS server. Client codebase fe
 Server codebase features include the Express.JS library, for unopinonated and readable response routing, and Knex.JS pairing up to PostgreSQL relational databases.
 
 ![screenShot1](./public/screenshots/screenshot-landing-page-form.png)
-![screenShot2](./public/screenshots/screenshot-info-page-form.png)
 
+![screenShot2](./public/screenshots/screenshot-info-page-form.png)
