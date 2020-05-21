@@ -1,0 +1,10 @@
+$primary-color: #0c18809c;
+$secondary-color: #92a0af;
+
+$default-border: solid 5px black;
+
+html,
+body {
+  background-color: $primary-color;
+  height: 100%;
+}
