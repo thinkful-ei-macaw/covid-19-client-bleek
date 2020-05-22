@@ -38,7 +38,7 @@ class SelectedState extends React.Component {
       };
       const target = ev.target;
       let res = await fetch(
-        `${config.API_ENDPOINT}/comments/${this.context.state_id}`,
+        `${config.DEV_ENDPOINT}/comments/${this.context.state_id}`,
         req
       );
       if (!res.ok) {
@@ -88,7 +88,7 @@ class SelectedState extends React.Component {
         <ul>
           {this.context.comments.map((comment) => (
             <li value={comment.state_id}>
-              {this.context.user} said: {comment.comment_body}
+              someone said: {comment.comment_body}
             </li>
           ))}
         </ul>

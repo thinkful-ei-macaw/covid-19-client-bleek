@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Context from '../../Context';
 import config from '../../config';
 import USMAP from '../../imgs/covid-us.png';
@@ -7,6 +6,11 @@ import './Register.scss';
 
 class Register extends React.Component {
   static contextType = Context;
+
+  state = {
+    error: false,
+    message: '',
+  };
 
   //callback for route history
   callback = () => {
@@ -21,6 +25,7 @@ class Register extends React.Component {
         res = res.status(404).send();
       } else {
         const data = await res.json();
+        console.log(data);
         this.context.setResidence(data);
       }
     } catch (error) {
@@ -67,7 +72,9 @@ class Register extends React.Component {
         </header>
         <img className="corona-map" src={USMAP} alt="covid-us"></img>
         <form className="reg_form" onSubmit={(ev) => this.handleSubmit(ev)}>
-          <label name="user">Name</label>
+          <label htmlFor="user" name="user">
+            Name
+          </label>
           <input
             required
             name="user"
@@ -83,9 +90,10 @@ class Register extends React.Component {
             type="text"
             onChange={this.changeStates}
           >
-            <option>Select Your State</option>
             {this.context.residence.map((item) => (
-              <option value={item.id}>{item.state_name}</option>
+              <option key={item.id} value={item.id}>
+                {item.state_name}
+              </option>
             ))}
           </select>
           <label name="industry">Most Recent Employment</label>
