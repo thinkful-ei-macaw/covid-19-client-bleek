@@ -1,6 +1,7 @@
 # COVID-19 in the US - an anonymous message board
 
-### [Try it out here!](https://corona-message-board-us.now.sh/state/10)
+### [Live! Try it out here!](https://corona-message-board-us.now.sh/state/10)
+### [Server-side API repo and Docs!](https://github.com/thinkful-ei-macaw/covid-19-server-bleek)
 
 ## Application Summary
 
