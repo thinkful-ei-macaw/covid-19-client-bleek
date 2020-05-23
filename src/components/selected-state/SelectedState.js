@@ -38,7 +38,7 @@ class SelectedState extends React.Component {
       };
       const target = ev.target;
       let res = await fetch(
-        `${config.DEV_ENDPOINT}/comments/${this.context.state_id}`,
+        `${config.API_ENDPOINT}/comments/${this.context.state_id}`,
         req
       );
       if (!res.ok) {
@@ -58,10 +58,10 @@ class SelectedState extends React.Component {
       <div className="Selected-State">
         <h1 className="users-state">{this.context.state.state_name}</h1>
         <h2 className="cases">
-          Comfirmed Cases: {this.context.state.confirm_cases}
+          Confirmed Cases: {this.context.state.confirm_cases}
         </h2>
         <h2 className="fatal">
-          Comfirmed Fatal: {this.context.state.confirm_fatal}
+          Confirmed Fatal: {this.context.state.confirm_fatal}
         </h2>
         {this.context.state.state_name ? (
           <img
@@ -76,13 +76,19 @@ class SelectedState extends React.Component {
         )}
         <form className="comment-form" onSubmit={this.postComment}>
           <label className="post" name="post">
-            how was {this.context.user} from {this.context.state.state_name}{' '}
-            affected?
+            How has the pandemic affected people living in{' '}
+            {this.context.state.state_name}?
           </label>
-          <textarea required name="post" rows="4" cols="40"></textarea>
+          <textarea
+            required
+            placeholder="Type your comment and press Post Comment..."
+            name="post"
+            rows="8"
+            cols="40"
+          ></textarea>
           <button className="submit-post">Post Comment</button>
           <button type="button" onClick={this.callback} className="back-btn">
-            Back
+            Go Back
           </button>
         </form>
         <ul>

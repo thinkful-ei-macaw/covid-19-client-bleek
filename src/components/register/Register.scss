@@ -33,50 +33,100 @@
 
 .reg_form {
   background-image: url('../../imgs/corona-virus-getty.jpg');
-  display: block;
-  float: left;
-  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
   font-size: 15px;
-  height: 500px;
   border: $default-border;
+  margin: 5px;
+  padding: 10px;
 }
 
-label {
-  font-family: Verdana, sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-  float: left;
-  color: #42ef18;
-  position: absolute;
-}
-
-.residence {
+select {
+  width: 140px;
   background-color: #d7cece;
   border: 2px solid #000000;
-  padding: 10px;
-  margin: 10px;
+  margin: 4px 2px 2px 4px;
+  padding: 4px 3px 3px 4px;
   float: right;
+}
+
+label[for='user'] {
+  float: left;
+  width: 60px;
+  padding: 2px 2px 2px 2px;
+  font-family: monospace;
+  color: #ffc800;
+  font-size: 20px;
+  border: 3px solid black;
 }
 
 input[type='text'] {
   border: 2px solid #000000;
   background-color: #d7cece;
-  padding: 4px;
+  display: inline-block;
+  padding: 7px 5px 5px 7px;
   margin: 7px 6px 6px 10px;
-  width: 60%;
+  width: 300px;
+  display: inline-block;
+}
+
+label[for='industry'] {
+  float: left;
+  width: 120px;
+  padding: 2px 2px 2px 2px;
+  font-family: monospace;
+  color: #ffc800;
+  font-size: 20px;
+  border: 3px solid black;
 }
 
 .submit {
   margin: 30px;
-  background-color: #d7cece;
+  background-color: #13d62d;
   border: 2px solid #000000;
+  border-radius: 20px;
   padding: 5px 4px 4px 5px;
+  width: 90px;
 }
 
 .corona-map {
   display: flex;
   flex-flow: column;
-  height: 90%;
-  width: 90%;
-  margin: 10px;
+  padding: 4px 2px 2px 4px;
+  max-height: 400px;
+  max-width: 600px;
+  margin: 5px;
+  border: 5px solid black;
+}
+
+@media only screen and(min-width: 900px) {
+  .reg-form {
+    display: block;
+    width: 700px;
+  }
+
+  label[for='industry'] {
+    float: left;
+    padding: 3px 3px;
+    margin: 2px 2px;
+  }
+
+  label[for='user'] {
+    float: left;
+    padding: 3px;
+    margin: 2px;
+  }
+
+  input[type='text'] {
+    display: inline-block;
+    max-width: 60%;
+  }
+  select,
+  option {
+    display: inline-block;
+  }
+  .corona-map {
+    max-width: 1000px;
+    margin: 10px;
+  }
 }

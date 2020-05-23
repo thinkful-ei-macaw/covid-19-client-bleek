@@ -16,7 +16,6 @@ class App extends React.Component {
     state: {
       state_name: '',
     },
-    hasError: false,
   };
 
   setResidence = (data) => {

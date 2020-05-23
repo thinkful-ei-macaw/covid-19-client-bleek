@@ -7,11 +7,6 @@ import './Register.scss';
 class Register extends React.Component {
   static contextType = Context;
 
-  state = {
-    error: false,
-    message: '',
-  };
-
   //callback for route history
   callback = () => {
     this.props.history.push('/state/' + this.context.state_id);
@@ -25,7 +20,6 @@ class Register extends React.Component {
         res = res.status(404).send();
       } else {
         const data = await res.json();
-        console.log(data);
         this.context.setResidence(data);
       }
     } catch (error) {
@@ -70,42 +64,45 @@ class Register extends React.Component {
           which will direct you to your states page where you will find current
           data, messages others have left and leave a message of your own.
         </header>
-        <img className="corona-map" src={USMAP} alt="covid-us"></img>
         <form className="reg_form" onSubmit={(ev) => this.handleSubmit(ev)}>
-          <label htmlFor="user" name="user">
-            Name
-          </label>
+          <label htmlFor="user">Name</label>
           <input
             required
+            id="user"
             name="user"
             type="text"
-            placeholder="anon"
+            placeholder="name or alias(ex: anon)"
             value={this.context.user}
+            onChange={this.context.handleChange}
+          />
+          <label htmlFor="industry">Employment</label>
+          <input
+            required
+            placeholder="Most recently held job title? Type of work?"
+            name="industry"
+            id="industry"
+            type="text"
+            value={this.context.industry}
             onChange={this.context.handleChange}
           />
           <select
             required
+            id="residence"
             className="residence"
             name="residence"
             type="text"
             onChange={this.changeStates}
           >
+            <option label="State"></option>
             {this.context.residence.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.state_name}
               </option>
             ))}
           </select>
-          <label name="industry">Most Recent Employment</label>
-          <input
-            required
-            name="industry"
-            type="text"
-            value={this.context.industry}
-            onChange={this.context.handleChange}
-          />
           <button className="submit">Submit</button>
         </form>
+        <img className="corona-map" src={USMAP} alt="covid-us"></img>
       </div>
     );
   }
