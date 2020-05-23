@@ -15,6 +15,6 @@ Users can select what 1 of the 54 U.S States and territories they live, their na
 An anonymous message board web app, using React client and Node.js server. Client codebase features dynamic component routing with React Router, sharing data between components using React Context, form input validation, and AJAX request in async/await function syntax. Also, SASS styles sheets(instead of vanilla CSS), with variable declarations for the "defaults" like color schemes and borders.
 Server codebase features include the Express.JS library, and Knex.JS pairing up to PostgreSQL relational databases. Features
 
-![screenShot1](./public/screenshots/screen2.png)
+![screen2](./public/screenshots/screen2.PNG)
 
-![screenShot2](./public/screenshots/screen1.png)
+![screen1](./public/screenshots/screen1.PNG)
